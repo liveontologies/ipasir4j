@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.github.liveontologies</groupId>
+		<artifactId>ipasir4j-parent</artifactId>
+		<version>0.1.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>ipasir4j-jna</artifactId>
+	<packaging>jar</packaging>
+
+	<name>JNA interfaces for IPASIR</name>
+	<description>Java Native Access (JNA) interfaces for accessing native C libraries that implement Reentrant Incremental Sat solver API (reverse: IPASIR)</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.github.liveontologies</groupId>
+			<artifactId>ipasir4j-model</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna</artifactId>
+		</dependency>
+	</dependencies>
+
+</project>

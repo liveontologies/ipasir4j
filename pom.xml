@@ -102,9 +102,8 @@
 					<executions>
 						<execution>
 							<id>unpack-native-libraries</id>
-							<!-- <phase>compile</phase> -->
 							<goals>
-								<goal>unpack</goal>
+								<goal>unpack-dependencies</goal>
 							</goals>
 							<configuration>
 								<outputDirectory>${native.directory}</outputDirectory>

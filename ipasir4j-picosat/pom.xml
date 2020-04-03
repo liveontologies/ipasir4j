@@ -41,6 +41,21 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- List all platforms for which native libraries where compiled -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${ipasir.artifactId}</artifactId>
+			<version>${ipasir.version}</version>
+			<type>zip</type>
+			<classifier>darwin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${ipasir.artifactId}</artifactId>
+			<version>${ipasir.version}</version>
+			<type>zip</type>
+			<classifier>linux-amd64</classifier>
+		</dependency>
 	</dependencies>
 
 
@@ -53,23 +68,7 @@
 					<execution>
 						<id>unpack-native-libraries</id>
 						<configuration>
-							<!-- List all platforms for which native libraries where compiled -->
-							<artifactItems>
-								<artifactItem>
-									<groupId>${project.groupId}</groupId>
-									<artifactId>${ipasir.artifactId}</artifactId>
-									<version>${ipasir.version}</version>
-									<type>zip</type>
-									<classifier>darwin</classifier>
-								</artifactItem>
-								<artifactItem>
-									<groupId>${project.groupId}</groupId>
-									<artifactId>${ipasir.artifactId}</artifactId>
-									<version>${ipasir.version}</version>
-									<type>zip</type>
-									<classifier>linux-amd64</classifier>
-								</artifactItem>
-							</artifactItems>
+							<includeArtifactIds>${ipasir.artifactId}</includeArtifactIds>
 						</configuration>
 					</execution>
 				</executions>

@@ -40,7 +40,7 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- List all platforms for which native libraries where compiled -->
+		<!-- List all platforms for which native libraries were compiled -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>${ipasir.artifactId}</artifactId>

@@ -20,6 +20,7 @@
 		<module>ipasir4j-model</module>
 		<module>ipasir4j-tests</module>
 		<module>ipasir4j-jna</module>
+		<module>ipasir4j-glucose</module>
 		<module>ipasir4j-minisat</module>
 		<module>ipasir4j-picosat</module>
 	</modules>

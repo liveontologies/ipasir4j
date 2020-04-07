@@ -55,8 +55,21 @@
 			<type>zip</type>
 			<classifier>linux-amd64</classifier>
 		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${ipasir.artifactId}</artifactId>
+			<version>${ipasir.version}</version>
+			<type>zip</type>
+			<classifier>win32-x86</classifier>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${ipasir.artifactId}</artifactId>
+			<version>${ipasir.version}</version>
+			<type>zip</type>
+			<classifier>win32-x86-64</classifier>
+		</dependency>
 	</dependencies>
-
 
 	<build>
 		<plugins>

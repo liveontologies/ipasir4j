@@ -15,8 +15,11 @@ matrix:
   - os: linux
     jdk: oraclejdk13
 
-before_install: mkdir -p ~/.m2 && cp .settings.xml ~/.m2/settings.xml
+cache:
+  directories:
+    - $HOME/.m2    
 
+before_install: mkdir -p ~/.m2 && cp .settings.xml ~/.m2/settings.xml
 install: mvn install -DskipTests=true
 script: mvn test -Dassembly.skipAssembly=true -B
 after_success:

@@ -9,10 +9,6 @@
 	<version>0.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<prerequisites>
-		<maven>3.0.5</maven>
-	</prerequisites>
-
 	<name>Java library for IPASIR</name>
 	<description>This library provides java interfaces based on Reentrant Incremental Sat solver API (reverse: IPASIR) for working with propositional satisfiability (SAT) solvers as well as bindings of several existing (native and java) SAT solvers for these interfaces.</description>
 

@@ -37,7 +37,7 @@ import com.github.liveontologies.ipasir4j.TerminationRequest;
 
 public abstract class IpasirSolverTest {
 
-	IpasirSolver solver;	
+	IpasirSolver solver;
 
 	protected abstract IpasirSolver createSolver();
 
@@ -121,7 +121,17 @@ public abstract class IpasirSolverTest {
 	}
 
 	@Test
-	public void testFailed() throws SolverTerminatedException {
+	public void testFailed1() throws SolverTerminatedException {
+		solver.add(-1);
+		solver.add(0);
+		assertTrue(solver.isSatisfiable());
+		solver.assume(1);
+		assertFalse(solver.isSatisfiable());
+		assertTrue(solver.isFailed(1));
+	}
+
+	@Test
+	public void testFailed2() throws SolverTerminatedException {
 		solver.add(-1);
 		solver.add(-2);
 		solver.add(0);

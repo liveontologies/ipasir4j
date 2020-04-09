@@ -12,8 +12,8 @@ install:
 build_script:
   - bash -c "mkdir -p $HOME/.m2"
   - bash -c "cp -f .settings.xml $HOME/.m2/settings.xml"
-  - mvn install -DskipTests=true -U -pl -ipasir4j-picosat
+  - mvn install -DskipTests=true -U
 test_script:
-  - mvn test -Dassembly.skipAssembly=true -B -pl -ipasir4j-picosat
+  - mvn test -Dassembly.skipAssembly=true -B
 cache:
   - C:\Users\appveyor\.m2

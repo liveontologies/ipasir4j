@@ -1,8 +1,5 @@
 package com.github.liveontologies.ipasir4j.cryptominisat;
 
-import org.junit.Ignore;
-import org.junit.Test;
-
 /*-
  * #%L
  * Java Bindings for the Minisat solver
@@ -26,7 +23,6 @@ import org.junit.Test;
  */
 
 import com.github.liveontologies.ipasir4j.IpasirSolver;
-import com.github.liveontologies.ipasir4j.SolverTerminatedException;
 
 import comp.github.liveontologies.ipasir4j.IpasirSolverTest;
 
@@ -37,23 +33,6 @@ public class CryptominisatTest extends IpasirSolverTest {
 	@Override
 	protected IpasirSolver createSolver() {
 		return Cryptominisat.createSolver();
-	}
-
-	/*
-	 * @see https://github.com/msoos/cryptominisat/issues/614
-	 */
-	@Override
-	@Test
-	@Ignore
-	public void testFailed1() throws SolverTerminatedException {
-		super.testFailed1();
-	}
-
-	@Override
-	@Test
-	@Ignore
-	public void testFailed2() throws SolverTerminatedException {
-		super.testFailed2();
 	}
 
 }

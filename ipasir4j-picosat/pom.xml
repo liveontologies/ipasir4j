@@ -10,6 +10,7 @@
 	</parent>
 
 	<artifactId>ipasir4j-picosat</artifactId>
+	<version>961-SNAPSHOT</version>
 
 	<name>Java bindings for the PicoSAT solver</name>
 	<description>Accessing the native PicoSAT solver throught IPASIR interface and its Java binding</description>
@@ -17,23 +18,24 @@
 	<properties>
 		<ipasir.artifactId>ipasir-picosat</ipasir.artifactId>
 		<ipasir.version>${project.version}</ipasir.version>
+		<ipasir4j.version>${project.parent.version}</ipasir4j.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>ipasir4j-model</artifactId>
-			<version>${project.version}</version>
+			<version>${ipasir4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>ipasir4j-jna</artifactId>
-			<version>${project.version}</version>
+			<version>${ipasir4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>ipasir4j-tests</artifactId>
-			<version>${project.version}</version>
+			<version>${ipasir4j.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>

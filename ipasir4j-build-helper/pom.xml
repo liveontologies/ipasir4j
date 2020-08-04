@@ -4,20 +4,18 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>ipasir4j-parent</artifactId>
-	<groupId>com.github.liveontologies</groupId>
-	<version>0.1.0-SNAPSHOT</version>
+	<parent>
+		<artifactId>jna-build-helper</artifactId>
+		<groupId>com.github.liveontologies</groupId>
+		<version>0.1.0-SNAPSHOT</version>
+		<relativePath></relativePath>
+	</parent>
+
+	<artifactId>ipasir4j-build-helper</artifactId>
 	<packaging>pom</packaging>
 
-	<name>Java library for IPASIR</name>
-	<description>This library provides java interfaces based on Reentrant Incremental Sat solver API (reverse: IPASIR) for working with propositional satisfiability (SAT) solvers.</description>
-
-	<modules>
-		<module>ipasir4j-model</module>
-		<module>ipasir4j-tests</module>
-		<module>ipasir4j-jna</module>
-		<module>ipasir4j-build-helper</module>		
-	</modules>
+	<name>IPASIR for Java build helper</name>
+	<description>Helps building and packaging of IPASIR native libraries and their java bindings.</description>
 
 	<url>https://github.com/liveontologies/${project.artifactId}</url>
 
@@ -60,6 +58,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<native.directory>${project.build.directory}/native</native.directory>
+		<ipasir4j.groupId>com.github.liveontologies</ipasir4j.groupId>
+		<ipasir4j.version>0.1.0-SNAPSHOT</ipasir4j.version>
 	</properties>
 
 	<dependencyManagement>
@@ -73,6 +73,21 @@
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>4.12</version>
+			</dependency>
+			<dependency>
+				<groupId>${ipasir4j.groupId}</groupId>
+				<artifactId>ipasir4j-model</artifactId>
+				<version>${ipasir4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${ipasir4j.groupId}</groupId>
+				<artifactId>ipasir4j-jna</artifactId>
+				<version>${ipasir4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${ipasir4j.groupId}</groupId>
+				<artifactId>ipasir4j-tests</artifactId>
+				<version>${ipasir4j.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -102,6 +117,37 @@
 							</goals>
 							<configuration>
 								<outputDirectory>${native.directory}</outputDirectory>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<!-- the plugin used to generate license headers -->
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>license-maven-plugin</artifactId>
+					<version>1.14</version>
+					<configuration>
+						<verbose>false</verbose>
+						<addSvnKeyWords>true</addSvnKeyWords>
+						<extraExtensions>
+							<g>java</g>
+							<jj>java</jj>
+						</extraExtensions>
+					</configuration>
+					<executions>
+						<execution>
+							<id>first</id>
+							<goals>
+								<goal>update-file-header</goal>
+								<goal>update-project-license</goal>
+							</goals>
+							<phase>package</phase>
+							<configuration>
+								<licenseName>apache_v2</licenseName>
+								<roots>
+									<root>src/main/java</root>
+									<root>src/test/java</root>
+								</roots>
 							</configuration>
 						</execution>
 					</executions>
@@ -140,37 +186,6 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<!-- the plugin used to generate license headers -->
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>license-maven-plugin</artifactId>
-				<version>1.14</version>
-				<configuration>
-					<verbose>false</verbose>
-					<addSvnKeyWords>true</addSvnKeyWords>
-					<extraExtensions>
-						<g>java</g>
-						<jj>java</jj>
-					</extraExtensions>
-				</configuration>
-				<executions>
-					<execution>
-						<id>first</id>
-						<goals>
-							<goal>update-file-header</goal>
-							<goal>update-project-license</goal>
-						</goals>
-						<phase>package</phase>
-						<configuration>
-							<licenseName>apache_v2</licenseName>
-							<roots>
-								<root>src/main/java</root>
-								<root>src/test/java</root>
-							</roots>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
 				<version>3.1.0</version>
@@ -193,7 +208,6 @@
 				<!-- filtering and copying of additional files; these will *not* be included 
 					in the jar -->
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>3.0.2</version>
 				<executions>
 					<execution>
 						<id>filter-main-resources</id>
@@ -216,7 +230,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- deplyoing to maven central -->
+			<!-- deploying to maven central -->
 			<plugin>
 				<groupId>org.sonatype.plugins</groupId>
 				<artifactId>nexus-staging-maven-plugin</artifactId>

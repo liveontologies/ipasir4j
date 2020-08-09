@@ -82,7 +82,7 @@ public interface IpasirSolver {
 	 * Evaluates {@code literal} under the last satisfying assignment found by
 	 * the solver. This method can be only called when the last call of
 	 * {@link #isSatisfiable()} has returned {@code true} and no methods
-	 * {@link #add(int)} or [{@link #assume(int)} was called afterwards.
+	 * {@link #add(int)} or {@link #assume(int)} was called afterwards.
 	 * 
 	 * @param literal
 	 *            a non-zero value that is interpreted as a literal to be
@@ -101,7 +101,7 @@ public interface IpasirSolver {
 	 * the formula of this solver in the last call of {@link #isSatisfiable()}.
 	 * This method can be only called when the last call of
 	 * {@link #isSatisfiable()} has returned {@code false} and no methods
-	 * {@link #add(int)} or [{@link #assume(int)} was called afterwards.
+	 * {@link #add(int)} or {@link #assume(int)} was called afterwards.
 	 * 
 	 * @param literal
 	 *            a non-zero value that is interpreted as a literal to be
@@ -130,10 +130,10 @@ public interface IpasirSolver {
 
 	/**
 	 * Registers the given listener with this solver to be notified about the
-	 * learned clauses up to a given maximal length. During each subsequent call
+	 * learned clauses up to the given maximal length. During each subsequent call
 	 * of {@link #isSatisfiable()}, the method
 	 * {@code LearningListener#clauseLearned(int[])} of the listener will be
-	 * called each time the solver finds a learned clause having at most {code
+	 * called each time the solver finds a learned clause having at most {@code
 	 * maxLength} literals. The array consisting of the literals of this clause
 	 * will be supplied as the argument of this method.
 	 * 

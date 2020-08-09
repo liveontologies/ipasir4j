@@ -81,7 +81,7 @@ public interface IpasirSolver {
 	/**
 	 * Evaluates {@code literal} under the last satisfying assignment found by
 	 * the solver. This method can be only called when the last call of
-	 * {@link #isSatisfiable()} has returned {@code true} and no methods
+	 * {@link #isSatisfiable()} returned {@code true} and no methods
 	 * {@link #add(int)} or {@link #assume(int)} was called afterwards.
 	 * 
 	 * @param literal
@@ -97,19 +97,23 @@ public interface IpasirSolver {
 	public int val(int literal);
 
 	/**
-	 * Determines if {@code literal} was used for proving unsatisfiability of
-	 * the formula of this solver in the last call of {@link #isSatisfiable()}.
-	 * This method can be only called when the last call of
-	 * {@link #isSatisfiable()} has returned {@code false} and no methods
+	 * Determines if the assumption {@code assume(literal)} was used for proving
+	 * unsatisfiability of the formula of this solver in the last call of
+	 * {@link #isSatisfiable()}. This method can be only called when the last
+	 * call of {@link #isSatisfiable()} returned {@code false} and no methods
 	 * {@link #add(int)} or {@link #assume(int)} was called afterwards.
 	 * 
 	 * @param literal
 	 *            a non-zero value that is interpreted as a literal to be
 	 *            evaluated
-	 * @return {@code true} if the given literal was used for proving
-	 *         unsatisfiability of the formula, and {@code false} otherwise,
-	 *         i.e., removing the assumption with the literal still results in
-	 *         unsatisfiable formula.
+	 * @return {@code true} if the the assumption {@code assume(literal)} was
+	 *         used for proving unsatisfiability of the formula, and
+	 *         {@code false} otherwise, i.e., removing this assumption still
+	 *         results in unsatisfiable formula. If the assumption
+	 *         {@code assume(literal)} was not made before the last call of
+	 *         {@link #isSatisfiable()} and after the previous call of
+	 *         {@link #isSatisfiable()}, the output of this method is not
+	 *         specified.
 	 */
 	public boolean isFailed(int literal);
 
@@ -130,8 +134,8 @@ public interface IpasirSolver {
 
 	/**
 	 * Registers the given listener with this solver to be notified about the
-	 * learned clauses up to the given maximal length. During each subsequent call
-	 * of {@link #isSatisfiable()}, the method
+	 * learned clauses up to the given maximal length. During each subsequent
+	 * call of {@link #isSatisfiable()}, the method
 	 * {@code LearningListener#clauseLearned(int[])} of the listener will be
 	 * called each time the solver finds a learned clause having at most {@code
 	 * maxLength} literals. The array consisting of the literals of this clause

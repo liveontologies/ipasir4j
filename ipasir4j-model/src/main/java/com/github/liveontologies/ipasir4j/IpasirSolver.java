@@ -136,10 +136,10 @@ public interface IpasirSolver {
 	 * Registers the given listener with this solver to be notified about the
 	 * learned clauses up to the given maximal length. During each subsequent
 	 * call of {@link #isSatisfiable()}, the method
-	 * {@code LearningListener#clauseLearned(int[])} of the listener will be
-	 * called each time the solver finds a learned clause having at most {@code
-	 * maxLength} literals. The array consisting of the literals of this clause
-	 * will be supplied as the argument of this method.
+	 * {@link LearningListener#clauseLearned(ClauseReader)} of the listener will
+	 * be called each time the solver finds a learned clause having at most
+	 * {@code maxLength} literals. The object {@link ClauseReader} supplied in
+	 * the argument of this method can be used to read this clause.
 	 * 
 	 * @param maxLength
 	 *            the maximal number of literals of the learned clauses reported

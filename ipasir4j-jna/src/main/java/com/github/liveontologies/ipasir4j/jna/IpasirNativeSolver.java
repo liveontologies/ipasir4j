@@ -141,7 +141,7 @@ public class IpasirNativeSolver implements IpasirSolver {
 
 			@Override
 			public void invoke(Pointer state, Pointer clause) {
-				listener.clauseLearned(Util.getIntArray(clause));
+				listener.clauseLearned(new JNAClauseReader(clause));
 			}
 		};
 		nativeLibrary_.ipasir_set_learn(solverPtr_, null, maxLength, callback);

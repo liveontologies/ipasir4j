@@ -34,12 +34,15 @@ package com.github.liveontologies.ipasir4j;
 public interface LearningListener {
 
 	/**
-	 * Notifies about a new clause learned by the solver
+	 * Notifies about a new clause learned by the solver. The literals of this
+	 * clause can be read using the {@link ClauseReader} object provided in the
+	 * argument of this method. This {@link ClauseReader} can be used only
+	 * during the call of this method.
 	 * 
-	 * @param clause
-	 *            the array consisting of the literals of a clause learned by
-	 *            the solver
+	 * @param reader
+	 *            a {@link ClauseReader} using which the literals of the learned
+	 *            clause can be read
 	 */
-	void clauseLearned(int[] clause);
+	void clauseLearned(ClauseReader reader);
 
 }

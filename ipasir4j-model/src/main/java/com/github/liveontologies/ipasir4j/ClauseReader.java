@@ -1,8 +1,8 @@
-package com.github.liveontologies.ipasir4j.jna;
+package com.github.liveontologies.ipasir4j;
 
 /*-
  * #%L
- * JNA interfaces for the IPASIR C header
+ * Java IPASIR interfaces
  * $Id:$
  * $HeadURL:$
  * %%
@@ -22,30 +22,20 @@ package com.github.liveontologies.ipasir4j.jna;
  * #L%
  */
 
-import com.sun.jna.Pointer;
-
 /**
- * A collection of utility methods
+ * An object using which a content of a clause can be read
  * 
  * @author Yevgeny Kazakov
+ * 
+ * @see LearningListener
  *
  */
-public class Util {
+public interface ClauseReader {
 
 	/**
-	 * Reads a 0-terminating integer array from the pointer
-	 * 
-	 * @param p
-	 * @return the resulting array
+	 * @return the next literal of the read clause or {@code 0} if all literals
+	 *         of the clause have been read.
 	 */
-	public static int[] getIntArray(Pointer p) {
-		int offset = 0;
-		int size = 0;
-		while (p.getInt(offset) != 0) {
-			offset += 4; // TODO: 4 bytes for int - platform independent?
-			size++;
-		}
-		return p.getIntArray(0, size);
-	}
+	int getNextLiteral();
 
 }

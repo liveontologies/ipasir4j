@@ -30,6 +30,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.github.liveontologies.ipasir4j.ClauseReader;
 import com.github.liveontologies.ipasir4j.IpasirSolver;
 import com.github.liveontologies.ipasir4j.LearningListener;
 import com.github.liveontologies.ipasir4j.SolverTerminatedException;
@@ -67,7 +68,7 @@ public abstract class IpasirSolverTest {
 		solver.setLearningListener(0, new LearningListener() {
 
 			@Override
-			public void clauseLearned(int[] clause) {
+			public void clauseLearned(ClauseReader reader) {
 			}
 		});
 	}

@@ -41,9 +41,7 @@ public interface JNALearnCallback extends Callback {
 	 *            a pointer passed upon the registration of this callback with
 	 *            the solver
 	 * @param clause
-	 *            a pointer to the array of literals of the learned clauses;
-	 *            this array can be read using
-	 *            {@link Util#getIntArray(Pointer)}.
+	 *            a pointer to the array of literals of the learned clause
 	 */
 	void invoke(Pointer state, Pointer clause);
 

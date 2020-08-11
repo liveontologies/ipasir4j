@@ -1,8 +1,8 @@
-package com.github.liveontologies.ipasir4j;
+package com.github.liveontologies.ipasir4j.random;
 
 /*-
  * #%L
- * Java IPASIR interfaces
+ * Tests for Java IPASIR interfaces
  * $Id:$
  * $HeadURL:$
  * %%
@@ -23,19 +23,21 @@ package com.github.liveontologies.ipasir4j;
  */
 
 /**
- * An object using which a content of a clause can be read
+ * A generator that can be used to generate a fixed number of random integers
  * 
  * @author Yevgeny Kazakov
- * 
- * @see LearningListener
  *
  */
-public interface ClauseReader {
+public interface IntGenerator {
 
 	/**
-	 * @return the next literal of the read clause or {@code 0} if all literals
-	 *         of the clause have been read.
+	 * @return the number of values remained to generate
 	 */
-	int getNextLiteralOrZero();
+	int getRemainingCount();
+
+	/**
+	 * @return the next value to generate
+	 */
+	int getNextValue();
 
 }

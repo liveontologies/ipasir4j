@@ -55,7 +55,7 @@ public class JNAClauseReader implements ClauseReader {
 	}
 
 	@Override
-	public int getNextLiteral() {
+	public int getNextLiteralOrZero() {
 		if (endOfClause_) {
 			throw new NoSuchElementException("End of clause has been reached!");
 		}

@@ -54,6 +54,11 @@ public class IpasirNativeSolver implements IpasirSolver {
 	private SolverState state_;
 
 	/**
+	 * The exceptions of callback functions
+	 */
+	private Throwable callbackExcpetion_;
+
+	/**
 	 * Creates a new {@link IpasirSolver} backed by the given native
 	 * {@link JNAIpasir} library
 	 * 
@@ -88,6 +93,7 @@ public class IpasirNativeSolver implements IpasirSolver {
 	@Override
 	public boolean isSatisfiable() throws SolverTerminatedException {
 		int solverResult = nativeLibrary_.ipasir_solve(solverPtr_);
+		handleCallbackException();
 		switch (solverResult) {
 		case 10:
 			state_ = SolverState.SAT;
@@ -127,10 +133,16 @@ public class IpasirNativeSolver implements IpasirSolver {
 		JNATerminateCallback callback = new JNATerminateCallback() {
 			@Override
 			public int invoke(Pointer state) {
-				return request.terminateASAP() ? 1 : 0;
+				try {
+					return request.terminateASAP() ? 1 : 0;
+				} catch (Throwable e) {
+					callbackExcpetion_ = e;
+					return 1;
+				}
 			}
 		};
 		nativeLibrary_.ipasir_set_terminate(solverPtr_, null, callback);
+
 	}
 
 	@Override
@@ -141,7 +153,11 @@ public class IpasirNativeSolver implements IpasirSolver {
 
 			@Override
 			public void invoke(Pointer state, Pointer clause) {
-				listener.clauseLearned(new JNAClauseReader(clause));
+				try {
+					listener.clauseLearned(new JNAClauseReader(clause));
+				} catch (Throwable e) {
+					callbackExcpetion_ = e;
+				}
 			}
 		};
 		nativeLibrary_.ipasir_set_learn(solverPtr_, null, maxLength, callback);
@@ -169,6 +185,12 @@ public class IpasirNativeSolver implements IpasirSolver {
 			return new IllegalStateException("The formula is unsatisfiable!");
 		default:
 			return new IllegalStateException("Unknown error!");
+		}
+	}
+
+	private void handleCallbackException() {
+		if (callbackExcpetion_ != null) {
+			throw new RuntimeException(callbackExcpetion_);
 		}
 	}
 

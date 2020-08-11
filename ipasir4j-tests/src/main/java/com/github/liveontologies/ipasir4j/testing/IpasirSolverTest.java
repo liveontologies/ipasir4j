@@ -1,4 +1,4 @@
-package comp.github.liveontologies.ipasir4j;
+package com.github.liveontologies.ipasir4j.testing;
 
 /*-
  * #%L

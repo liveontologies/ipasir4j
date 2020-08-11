@@ -79,6 +79,12 @@ public abstract class IpasirSolverTest {
 	}
 
 	@Test
+	public void testEmptyClause() throws SolverTerminatedException {
+		solver.add(0);
+		assertFalse(solver.isSatisfiable());
+	}
+	
+	@Test
 	public void testSimpleClash() throws SolverTerminatedException {
 		solver.add(1);
 		solver.add(0);

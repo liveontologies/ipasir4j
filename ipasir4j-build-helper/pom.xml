@@ -261,7 +261,7 @@
 			</activation>
 			<properties>
 				<!-- javadoc of JDK8 fail on many warnings -->
-				<javadoc.opts>-Xdoclint:none</javadoc.opts>
+				<doclint.opts>none</doclint.opts>
 			</properties>
 		</profile>
 		<profile>
@@ -292,7 +292,7 @@
 									<goal>jar</goal>
 								</goals>
 								<configuration>
-									<additionalparam>${javadoc.opts}</additionalparam>
+									<doclint>${doclint.opts}</doclint>
 								</configuration>
 							</execution>
 						</executions>

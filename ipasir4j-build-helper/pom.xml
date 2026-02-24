@@ -6,7 +6,7 @@
 
 	<parent>
 		<artifactId>jna-build-helper</artifactId>
-		<groupId>com.github.liveontologies</groupId>
+		<groupId>io.github.liveontologies</groupId>
 		<version>1.0.0-SNAPSHOT</version>
 		<relativePath></relativePath>
 	</parent>
@@ -58,7 +58,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<native.directory>${project.build.directory}/native</native.directory>
-		<ipasir4j.groupId>com.github.liveontologies</ipasir4j.groupId>
+		<ipasir4j.groupId>io.github.liveontologies</ipasir4j.groupId>
 		<ipasir4j.version>1.0.0-SNAPSHOT</ipasir4j.version>
 	</properties>
 

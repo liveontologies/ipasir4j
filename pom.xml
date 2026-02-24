@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>ipasir4j-parent</artifactId>
-	<groupId>com.github.liveontologies</groupId>
+	<groupId>io.github.liveontologies</groupId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
@@ -236,9 +236,15 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- deploying snapshots and releases to maven central -->
 			<plugin>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<version>3.1.2</version>
+				<groupId>org.sonatype.central</groupId>
+				<artifactId>central-publishing-maven-plugin</artifactId>
+				<version>0.10.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<publishingServerId>central</publishingServerId>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

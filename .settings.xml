@@ -5,36 +5,34 @@
 
 	<servers>
 		<server>
-			<id>ossrh</id>
-			<username>${env.OSSRH_USERNAME}</username>
-			<password>${env.OSSRH_PASSWORD}</password>
+			<id>central</id>
+			<username>${env.CENTRAL_USERNAME}</username>
+			<password>${env.CENTRAL_PASSWORD}</password>
 		</server>
 	</servers>
 
 	<profiles>
 		<profile>
-			<id>ossrh</id>
-			<properties>
-				<altSnapshotDeploymentRepository>ossrh::default::https://oss.sonatype.org/content/repositories/snapshots</altSnapshotDeploymentRepository>
-				<altReleaseDeploymentRepository>ossrh::default::https://oss.sonatype.org/service/local/staging/deploy/maven2/</altReleaseDeploymentRepository>
-			</properties>
+			<id>central</id>
 			<repositories>
 				<repository>
-					<id>ossrh</id>
-					<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
+					<name>Central Portal Snapshots</name>
+					<id>central-portal-snapshots</id>
+					<url>
+						https://central.sonatype.com/repository/maven-snapshots/</url>
 					<releases>
 						<enabled>false</enabled>
 					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
 				</repository>
 			</repositories>
 		</profile>
 	</profiles>
 
 	<activeProfiles>
-		<activeProfile>ossrh</activeProfile>
+		<activeProfile>central</activeProfile>
 	</activeProfiles>
 
 </settings>

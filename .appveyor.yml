@@ -6,12 +6,19 @@ environment:
   matrix:
     - job_name: java8-win-x64
       JAVA_HOME: C:\Program Files\Java\jdk1.8.0
+<<<<<<< Upstream, based on c4fd1c883b6d1a9195d2c4276e0e5f2fd5508f16
     - job_name: java11-win-x64
       JAVA_HOME: C:\Program Files\Java\jdk11
       # Workaround for JDK-8213202
       MAVEN_OPTS: -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2
+=======
+>>>>>>> 59e2770 Test with java 21 and 25
     - job_name: java17-win-x64
-      JAVA_HOME: C:\Program Files\Java\jdk17    
+      JAVA_HOME: C:\Program Files\Java\jdk17
+    - job_name: java21-win-x64
+      JAVA_HOME: C:\Program Files\Java\jdk21
+    - job_name: java25-win-x64
+      JAVA_HOME: C:\Program Files\Java\jdk25        
     - job_name: java8-linux-deploy
       APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu2004
       JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64 
